@@ -9,8 +9,12 @@ public class _01_SortedArrayChecker {
      * and false otherwise.
      */
     public static boolean intArraySorted(int[] arr) {
-        
-        return false;
+        for(int i = arr.length - 1; i < 1; i--) {
+        	if(arr[i] < arr[i-1]) {
+        		return false;
+        	}
+        }
+        return true;
     }
 
     /*
@@ -20,6 +24,16 @@ public class _01_SortedArrayChecker {
      * The method returns true if the double array is in ascending order
      * and false otherwise.
      */
+    
+    public static boolean doubleArraySorted(double[] doubles) {
+    	for(int i = 0; i < doubles.length - 1; i++) {
+    		if(doubles[i] > doubles[i] + 1) {
+    			return false;
+    		}
+    	}
+    	return true;
+    	
+    }
 
 
     /*
@@ -30,6 +44,14 @@ public class _01_SortedArrayChecker {
      * order and false otherwise (You can compare characters just like
      * integers).
      */
+    
+    public static boolean charArraySorted(char[] chars) {
+    	for(int i = 0; i < chars.length; i++) {
+    		
+    			
+    		}
+    	}
+    }
 
 
     /*
