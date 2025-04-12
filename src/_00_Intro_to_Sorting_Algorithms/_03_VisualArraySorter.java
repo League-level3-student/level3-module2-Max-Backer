@@ -1,11 +1,14 @@
 package _00_Intro_to_Sorting_Algorithms;
 
+import java.awt.Rectangle;
+
 import processing.core.PApplet;
 
 /*
  * Goal: Create a program that sorts each rectangle by height!
  * 
  * 1. Create an array of ints. Do not initialize it.
+ * 
  *
  *In the settings() method:
  * 2. Set the size of your window to at least 500 width 500 height
@@ -38,43 +41,66 @@ import processing.core.PApplet;
  *     mousePressed variable
  */
 public class _03_VisualArraySorter extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 400;
 
-    @Override
-    public void settings() {
-        
-    }
+	int[] ints;
 
-    @Override
-    public void setup() {
-        
-    }
+	@Override
+	public void settings() {
+		size(500, 500);
+	}
 
-    @Override
-    public void draw() {
-        
-    }
+	@Override
+	public void setup() {
+		noStroke();
 
-    static public void main(String[] passedArgs) {
-        PApplet.main(_03_VisualArraySorter.class.getName());
-    }
-    
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
-    
-    int startIndex = 1;
+		ints = new int[50];
+		randomizeArray();
+	}
 
-    void stepSort(int[] arr) {
-      for (int i = startIndex; i < arr.length; i++) {
-        if (arr[i - 1] > arr[i]) {
-          int t = arr[i];
-          arr[i] = arr[i - 1];
-          arr[i - 1] = t;
+	@Override
+	public void draw() {
+		background(300, 20, 150);
+		fill(50, 300, 80);
 
-          startIndex = i;
-          return;
-        }
-      }
-      startIndex = 1;
-    }
+		for (int i = 0; i < ints.length; i++) {
+			Rectangle rect = new Rectangle();
+			rect.setBounds(i * width / ints.length, height, width / ints.length, -ints[i]);
+		}
+
+		if (mousePressed) {
+			randomizeArray();
+		}
+
+		stepSort(ints);
+	}
+
+	public void randomizeArray() {
+		for (int i : ints) {
+			i = (int) random(height);
+		}
+	}
+
+	static public void main(String[] passedArgs) {
+		PApplet.main(_03_VisualArraySorter.class.getName());
+	}
+
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
+
+	int startIndex = 1;
+
+	void stepSort(int[] arr) {
+		for (int i = startIndex; i < arr.length; i++) {
+			if (arr[i - 1] > arr[i]) {
+				int t = arr[i];
+				arr[i] = arr[i - 1];
+				arr[i - 1] = t;
+
+				startIndex = i;
+				return;
+			}
+		}
+		startIndex = 1;
+	}
 }
